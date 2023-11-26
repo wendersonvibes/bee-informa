@@ -5,40 +5,6 @@
     <title>Setores</title>
 {% endblock 'titulo' %}
 
-{% block 'navbar' %}
-    <div class="container-fluid ">
-        <section class="container">
-            <section class="row">
-                <section class="col-md-12">
-                    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
-                        <div class="container-fluid">
-                        <a class="navbar-brand" href="#"></a>
-                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
-                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                            <ul class="navbar-nav ms-auto">
-                            <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="{% url "inicio" %}">INÍCIO</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="#">DIVULGAÇÕES</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="{% url "setores" %}">SETORES</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="#">ENTRAR</a>
-                            </li>
-                        </div>
-                        </div>
-                    </nav>
-                </section>
-            </section>
-        </section>
-    </div>
-{% endblock 'navbar' %}
-
 {% block 'cabecalho' %}
     <section class="container-fluid" id="cabecalho">
         <section class="container">
@@ -75,7 +41,7 @@
             <section class='container'>
                 <section class='row'>
                     <section class='col-md-12'>
-                        <h3 class='h3 titulo-setores'>Nome do setor</h3>
+                        <h3 class='h3 titulo-conteudo'>Nome do setor</h3>
 
                         <article class='col-md-8'>
                             <div class='table-responsive'>

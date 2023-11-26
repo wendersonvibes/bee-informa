@@ -93,12 +93,20 @@ img{
 
 
 
-/* titulo-setores */
+/* titulo-conteudo */
 
-.titulo-setores{
+.titulo-conteudo{
     color: var(--roxo);
     padding-bottom: 10px;
 }
+
+/* galeria de fotos */
+.galeria{
+    margin-top: 10px;
+    column-count: 6;
+    column-gap: 10px;
+}
+
 
 
 /* ajuste de responsividade */
@@ -111,5 +119,10 @@ img{
     }
     .h5{
         font-size: 16px;
+    }
+
+    .galeria{
+        column-count: 2;
+        column-gap: 10px;
     }
 }

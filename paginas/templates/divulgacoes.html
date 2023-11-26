@@ -1,0 +1,73 @@
+{% extends "modelo.html" %}
+{% load static %}
+
+
+{% block 'titulo' %}
+    <title>Divulgações</title>
+{% endblock 'titulo' %}
+
+
+{% block 'cabecalho' %}
+    <section class="container-fluid" id="cabecalho">
+        <section class="container">
+            <section class="row">
+                <section class="col-md-12">
+                <section id="conteudo-cabecalho">
+                    <h1 id="titulo">DIVULGAÇÕES</h1>
+                    <p class="lead">Bem vindo(a) a colmeia de novidades!</p>
+                </section>
+                </section>
+            </section>
+        </section>
+    </section>
+{% endblock 'cabecalho' %}
+
+{% block 'conteudo' %}
+
+    {% block 'campo-busca' %}
+        <section class='container-fluid'>
+            <section class='container'>
+                <section class='row'>
+                    <section class='col-md-6 conteudo-carousel'>
+                        <form class="d-flex">
+                            <input class="form-control me-2" type="search" placeholder="Procure pela divulgação..." aria-label="Search">
+                            <button class="btn btn-outline-secondary" type="submit">Procure</button>
+                        </form>
+                    </section>
+                </section>
+            </section>
+        </section>
+    {% endblock 'campo-busca' %}
+
+    {% block divulgacao %}
+        <section class="container-fluid">
+            <section class="container">
+            <section class="row">
+                <div class="col-md-12">
+                    <h3 class="h3 titulo-conteudo">Nome da postagem</h3>
+                    <p class="text-muted data-publicacao" >Publicada em 21/11/2023</p>
+                    <p >"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, 
+                        totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae 
+                        dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, 
+                        sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, 
+                        qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora
+                        incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum 
+                        exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure 
+                        reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem 
+                        eum fugiat quo voluptas nulla pariatur?"
+                    </p>
+                </div>
+
+                <article class="col-md-12 galeria" >
+                    <img class="img-thumbnail" src="{% static 'imagens/20230127_103657.jpg'%}" alt="">
+                    <img class="img-thumbnail" src="{% static 'imagens/20230711_135518.jpg'%} "alt="">
+                    <img class="img-thumbnail" src="{% static 'imagens/IMG-20231018-WA0050.jpg' %}" alt="">
+                    <img class="img-thumbnail" src="{% static 'imagens/IMG-20231023-WA0252.jpg'%}" alt="">
+                </article>
+            </section>
+        </section>
+    {% endblock divulgacao %}
+
+
+
+{% endblock 'conteudo' %}
