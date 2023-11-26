@@ -1,0 +1,117 @@
+{% extends "modelo.html" %}
+{% load static %}
+
+{% block 'titulo' %}
+    <title>Setores</title>
+{% endblock 'titulo' %}
+
+{% block 'navbar' %}
+    <div class="container-fluid ">
+        <section class="container">
+            <section class="row">
+                <section class="col-md-12">
+                    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+                        <div class="container-fluid">
+                        <a class="navbar-brand" href="#"></a>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav ms-auto">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="{% url "inicio" %}">INÍCIO</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="#">DIVULGAÇÕES</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="{% url "setores" %}">SETORES</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="#">ENTRAR</a>
+                            </li>
+                        </div>
+                        </div>
+                    </nav>
+                </section>
+            </section>
+        </section>
+    </div>
+{% endblock 'navbar' %}
+
+{% block 'cabecalho' %}
+    <section class="container-fluid" id="cabecalho">
+        <section class="container">
+        <section class="row">
+            <section class="col-md-12">
+            <section id="conteudo-cabecalho">
+                <h1 id="titulo">SETORES</h1>
+                <p class="lead">Bem vindo(a) a colmeia de informações sobre os horários dos setores!</p>
+            </section>
+            </section>
+        </section>
+        </section>
+    </section>
+{% endblock 'cabecalho' %}
+
+{% block 'conteudo' %}
+    {% block 'campo-busca' %}
+        <section class='container-fluid'>
+            <section class='container'>
+                <section class='row'>
+                    <section class='col-md-6 conteudo-carousel'>
+                        <form class="d-flex">
+                            <input class="form-control me-2" type="search" placeholder="Procure pelo setor..." aria-label="Search">
+                            <button class="btn btn-outline-secondary" type="submit">Procure</button>
+                        </form>
+                    </section>
+                </section>
+            </section>
+        </section>
+    {% endblock 'campo-busca' %}
+
+    {% block 'horario-setor' %}
+        <section class='container-fluid'>
+            <section class='container'>
+                <section class='row'>
+                    <section class='col-md-12'>
+                        <h3 class='h3 titulo-setores'>Nome do setor</h3>
+
+                        <article class='col-md-8'>
+                            <div class='table-responsive'>
+                                <table class='table table-striped table-hover table-bordered align-middle'>
+                                    <thead scope='col'>
+                                        <tr>
+                                            <th scope="col">Segunda-feira</th>
+                                            <th scope="col">Terça-Feira</th>
+                                            <th scope="col">Quarta-feira</th>
+                                            <th scope="col">Quinta-feira</th>
+                                            <th scope="col">Sexta-feira</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>9:00 ás 11:00</td>
+                                            <td>-</td>
+                                            <td>14:00 ás 16:00</td>
+                                            <td>14:00 ás 16:00</td>
+                                            <td>14:00 ás 16:00</td>
+                                        </tr>
+                                    </tbody>
+
+                                </table>
+                            </div>
+                        </article>
+                    </section>
+                </section>
+            </section>
+        </section>
+    {% endblock 'horario-setor' %}
+
+    
+    
+{% endblock 'conteudo' %}
+
+
+
+

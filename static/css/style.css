@@ -64,7 +64,6 @@ img{
 .titulo-secundario{
     text-align: center;
     color: var(--roxo);
-
 }
 
 .h5{
@@ -88,11 +87,17 @@ img{
 /* botao */
 
 .botao{
-    float: right;
+    margin-bottom: 2em;
+    margin-top: 1em;
 }
 
-.home-card{
-    padding-top: 4em;
+
+
+/* titulo-setores */
+
+.titulo-setores{
+    color: var(--roxo);
+    padding-bottom: 10px;
 }
 
 
