@@ -1,0 +1,110 @@
+@import url('https://fonts.googleapis.com/css2?family=Didact+Gothic&family=Fira+Sans:wght@200;300;400;500;600;700;800&family=Poppins&display=swap');
+
+body{
+    font-family: 'Fira Sans', sans-serif;
+}
+
+:root{
+    --laranja: #E79F34;
+    --laranja_claro: rgb(238, 233, 225);
+    --amarelo: #F5C73E;
+    --laranja_escuro: #d8942f;
+    --branco: white;
+    --roxo:#831E62;
+}
+
+/* cabecalho e navbar */
+.navbar{
+    font-size: 14px;
+    background-color: var(--laranja_escuro);
+}.collapse{
+    padding-right: 5.5em;
+}
+
+#cabecalho{
+    background-color: var(--laranja);
+    opacity: 0.90;
+    box-shadow: 0px 1px 0px 0px rgba(46, 46, 46, 0.25);
+}
+#conteudo-cabecalho{
+    padding-top: 8em;
+    padding-bottom: 3em;
+    color: var(--branco);
+    
+}
+#titulo{
+    font-weight:700;
+}
+
+/* ajuste de imagem e carousel */
+
+img{
+    object-fit: cover;
+    width: 500px;
+    height: 300px;
+}
+
+.d-block{
+    height: 300px;
+}
+
+.conteudo-carousel{
+    padding-top: 2em;
+    padding-bottom: 2em;
+}
+
+/* espaçamento conteudo site */
+
+.conteudo-corpo{
+    padding-top: 4em;
+    padding-bottom: 2em;
+}
+
+/* titulos secundarios, descrição deles, sessoes e tabelas (home.html) */
+.titulo-secundario{
+    text-align: center;
+    color: var(--roxo);
+
+}
+
+.h5{
+    color:var(--roxo);
+}
+
+.descricao-titulo{
+    text-align: center;
+}
+
+.sessao-dois{
+    background-color: var(--laranja_claro);
+}
+
+.table{
+    background-color: white;
+    border-radius: 2px;
+    text-align: center;
+}
+
+/* botao */
+
+.botao{
+    float: right;
+}
+
+.home-card{
+    padding-top: 4em;
+}
+
+
+/* ajuste de responsividade */
+@media (max-width: 450px){
+    .d-block{
+        height: 200px;
+    }
+    .table,p, .lead{
+        font-size: 13px;
+    }
+    .h5{
+        font-size: 16px;
+    }
+}
