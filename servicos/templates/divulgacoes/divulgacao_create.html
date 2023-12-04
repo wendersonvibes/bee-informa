@@ -1,0 +1,18 @@
+{% extends "modelo.html" %}
+
+{% block titulo %}
+    <title>Criar divulgação</title>
+{% endblock titulo %}
+
+
+{% block 'conteudo' %}
+    <form action="{% url 'divulgacao-create'%}" method="POST" enctype="multipart/form-data" class="container conteudo-corpo-admin mt-4 mb-4">
+        {% csrf_token %}
+
+        {{ form.media }}
+        {{ form.as_p }}
+
+        <button type="submit" class="btn btn-danger">Criar</button>
+    </form>
+{% endblock 'conteudo' %}
+

@@ -8,5 +8,5 @@ def home_view(request):
 def setores_view(request):
     return render(request, 'setores.html')
 
-def divulgacoes_view(request):
-    return render(request, 'divulgacoes.html')
+# def divulgacoes_view(request):
+#     return render(request, 'divulgacoes.html')

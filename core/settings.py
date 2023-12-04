@@ -17,13 +17,40 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    # Apps
     'crispy_forms',
-    'crispy_bootstrap4',
-    'paginas.apps.PaginasConfig',
+    'crispy_bootstrap5',
+    'ckeditor',
+
+    # Custom apps
+    'paginas.apps.PaginasConfig',   
+    'servicos.apps.ServicosConfig',
+    'usuarios.apps.UsuariosConfig',
 ]
 
-CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap4"
-CRISPY_TEMPLATE_PACK = "bootstrap4"
+AUTH_USER_MODEL = "usuarios.Usuario"
+
+# CKEDITOR
+CKEDITOR_CONFIGS = {
+   'awesome_ckeditor': {
+       'toolbar_Full': [
+            ['Format', 'Bold', 'Italic', 'Underline', 'Strike', 'SpellChecker', 'Undo', 'Redo'],
+            ['Link', 'Unlink'],
+            ['Flash', 'HorizontalRule'],
+            ['TextColor', 'BGColor'],
+            ['Smiley'],
+            ['JustifyLeft','JustifyCenter','JustifyRight','JustifyBlock'],
+            ['NumberedList','BulletedList'],
+            ['Indent','Outdent'],
+            ['Maximize'],
+        ],
+        'extraPlugins': 'justify,liststyle,indent',
+   },
+}
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -86,6 +113,10 @@ USE_I18N = True
 USE_TZ = True
 
 STATIC_URL = 'static/'
-STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
+STATICFILES_DIRS = (os.path.join(BASE_DIR, 'staticfiles'),)
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
