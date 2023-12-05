@@ -1,0 +1,16 @@
+{% extends "modelo.html" %}
+
+{% block titulo %}
+    <title>Deletar divulgação</title>
+{% endblock titulo %}
+
+{% block 'conteudo' %}
+    <form action="{% url "divulgacao-delete" divulgacao.id %}" method="POST" class="container conteudo-corpo-admin">
+        {% csrf_token %}
+        
+        <h3>Deseja deletar: {{ divulgacao.titulo }}?</h3>
+
+        <button type="submit" class="btn btn-danger">Deletar</button>
+    </form>
+{% endblock 'conteudo' %}
+

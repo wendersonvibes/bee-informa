@@ -1,0 +1,21 @@
+{% extends "modelo.html" %}
+
+{% block 'conteudo' %}
+    {% for divulg in divulgacoes %}
+    <div>
+        <h1 class='titulo-conteudo'>{{ divulg.titulo }}</h1>
+        <p> {{ divulg.data_registro }} </p>
+        <hr>
+        <div> {{ divulg.conteudo|safe }} </div>
+
+        
+        {% for img in divulg.imagem_da_divulgacao.all %}
+            <img src="{{ img.imagem.url }}" alt="">
+        {% endfor %}
+                           
+    </div>
+    {% empty %}
+    <p>Desculpe, por enquanto nada foi postado!</p>
+    {% endfor %}
+{% endblock 'conteudo' %}
+

@@ -26,9 +26,17 @@
                             <li class="nav-item">
                                 <a class="nav-link active" aria-current="page" href="#setores">SETORES</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="#">ENTRAR</a>
-                            </li>
+
+                            {% if request.user.is_authenticated %}
+                                <li class="nav-item">
+                                    <a class="nav-link " style='color: var(--roxo);' aria-current="page" href="{% url 'logout' %}">SAIR</a>
+                                </li>
+                            {% else %}
+                                <li class="nav-item">
+                                    <a class="nav-link active" aria-current="page" href="{% url 'login' %}">ENTRAR</a>
+                                </li>
+                            {% endif %}
+                            
                         </div>
                         </div>
                     </nav>
