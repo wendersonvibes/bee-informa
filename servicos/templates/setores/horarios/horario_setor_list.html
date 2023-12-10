@@ -1,15 +1,66 @@
+{% load static %}
 
+{% block sidebar %}
+    {% include "sidebar.html" %}
+{% endblock sidebar %}
 
-<a href="{% url 'horario-setor-create' %}">Adicionar horário</a> <br> <br>
+{% block 'conteudo' %}
+    <div class="container">
+        <a href="{% url 'horario-setor-create' %}">Adicionar horário do setor</a>
 
-{% for horario in horarios  %}
+        <table class="table table-striped ">
+            <thead>
+                <tr>
+                    <td>Setor</td>
+                    <td>Horário</td>
+                    <td>Opções</td>
+                </tr>
+            </thead>
 
-    <h4>{{ horario.setor.nome }}</h4> <br>
+            <tbody>
+                {% for horario in page_obj %}
+                    <tr>
+                        <td> {{ horario.setor.nome }} </td>
+                        <td> {{ horario.horario_inicio }} - {{ horario.horario_fim }} - {{ horario.dia_semana }} </td>
+                        <td>
+                            <a class="btn btn-danger" href="{% url 'horario-setor-delete' horario.id %}">Deletar</a>
+                            <a class="btn btn-warning" href="{% url 'horario-setor-update' horario.id %}">Editar</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
 
-    {{ horario.dia_semana }} 
-    {{ horario.horario_inicio }} - {{ horario.horario_fim }}
+        {% comment %} PAGINAÇÃO {% endcomment %}
+        <div class="pagination justify-content-center">
+            <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-end">
+                    {% if page_obj.has_previous %}
+                        <li class="page-item">
+                            <a class="page-link" href="?page=1">&laquo; Primeiro</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="?page={{ page_obj.previous_page_number }}">Anterior</a>
+                        </li>
+                    {% endif %}
 
-    <a href="{% url 'horario-setor-delete' horario.id %}">Deletar</a>
-    <a href="{% url 'horario-setor-update' horario.id %}">Editar</a>
+                    <li class="page-item">
+                        <span class="page-link">
+                            Página {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}
+                        </span>
+                    </li>
 
-{% endfor %}
+                  {% if page_obj.has_next %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ page_obj.next_page_number }}">Próximo</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">Último &raquo;</a>
+                    </li>
+                  {% endif %}
+                </ul>
+            </nav>
+        </div>
+    </div>
+{% endblock 'conteudo' %}
+

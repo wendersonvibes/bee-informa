@@ -1,16 +1,68 @@
-<a href="{% url 'refeicao-create' %}">Adicionar refeição</a> <br><br>
+{% load static %}
 
-{% for refeicao in refeicoes  %}
-    {{ refeicao.tipo_refeicao.tipo_refeicao }} - {{ refeicao.data }}
+{% block sidebar %}
+    {% include "sidebar.html" %}
+{% endblock sidebar %}
 
-    <div>
-        {{ refeicao.horario_inicio }} - {{ refeicao.horario_fim }}
+{% block 'conteudo' %}
+    <div class="container">
+        <a href="{% url 'refeicao-create' %}">Adicionar horário de refeição</a>
+
+        <table class="table table-striped ">
+            <thead>
+                <tr>
+                    <td>Refeição</td>
+                    <td>Horário</td>
+                    <td>Data</td>
+                    <td>Opções</td>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for refeicao in page_obj %}
+                    <tr>
+                        <td> {{ refeicao.tipo_refeicao.tipo_refeicao }} </td>
+                        <td> {{ refeicao.horario_inicio }} - {{ refeicao.horario_fim }} - {{ refeicao.dia_semana }} </td>
+                        <td> {{ refeicao.data }} </td>
+                        <td>
+                            <a href="{% url 'refeicao-delete' refeicao.id %}">Deletar</a>
+                            <a href="{% url 'refeicao-update' refeicao.id %}">Editar</a> 
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        {% comment %} PAGINAÇÃO {% endcomment %}
+        <div class="pagination justify-content-center">
+            <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-end">
+                    {% if page_obj.has_previous %}
+                        <li class="page-item">
+                            <a class="page-link" href="?page=1">&laquo; Primeiro</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="?page={{ page_obj.previous_page_number }}">Anterior</a>
+                        </li>
+                    {% endif %}
+
+                    <li class="page-item">
+                        <span class="page-link">
+                            Página {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}
+                        </span>
+                    </li>
+
+                  {% if page_obj.has_next %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ page_obj.next_page_number }}">Próximo</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">Último &raquo;</a>
+                    </li>
+                  {% endif %}
+                </ul>
+            </nav>
+        </div>
     </div>
-    
-    
-    <a href="{% url 'refeicao-delete' refeicao.id %}">Deletar</a>
-    <a href="{% url 'refeicao-update' refeicao.id %}">Editar</a> 
-    {{ refeicao.descricao }}
-    <hr>
-    
-{% endfor %}
+{% endblock 'conteudo' %}
+

@@ -1,6 +1,7 @@
 from django.shortcuts import get_object_or_404, render
 from django.urls import reverse
 from django.http.response import HttpResponseRedirect
+from django.core.paginator import Paginator
 
 from .forms import DivulgacaoForm, SetorForm, HorarioSetorForm, RefeicaoForm
 from .models import Divulgacao, Imagem, Setor, HorarioSetor, Refeicao
@@ -8,8 +9,13 @@ from .models import Divulgacao, Imagem, Setor, HorarioSetor, Refeicao
 ########################## DIVULGAÇÕES ##########################
 
 def admin_divulgacao_list(request):
-    divulgacoes = Divulgacao.objects.all()
-    context = {'divulgacoes': divulgacoes}
+    divulgacoes = Divulgacao.objects.all().order_by('data_registro')
+    paginacao = Paginator(divulgacoes, 5)
+
+    page_number = request.GET.get("page")
+    page_obj = paginacao.get_page(page_number)
+
+    context = {'page_obj': page_obj}
     return render(request, "divulgacoes/divulgacao_list.html", context)
 
 def divulgacao_list(request):
@@ -24,8 +30,12 @@ def divulgacao_detail(request, id):
 def divulgacao_create(request):
     if (request.method == "POST"):
         form = DivulgacaoForm(request.POST, request.FILES)
+        autor = request.user
         if form.is_valid():
-            divulgacao = form.save() # salva o form
+            divulgacao = form.save(commit=False)
+            divulgacao.autor = autor
+            divulgacao.save()
+            # salva o form
             imagens = request.FILES.getlist("imagem_da_divulgacao") # coloca as imagens numa lista
 
             if (imagens):
@@ -57,8 +67,13 @@ def divulgacao_update(request, id):
 
 ########################## SETOR ##########################
 def admin_setor_list(request):
-    setores = Setor.objects.all()
-    context = {'setores': setores}
+    setores = Setor.objects.all().order_by("nome")
+    paginacao = Paginator(setores, 5)
+
+    page_number = request.GET.get("page")
+    page_obj = paginacao.get_page(page_number)
+
+    context = {'page_obj': page_obj}
     return render(request, "setores/setor_list.html", context)
 
 def setor_list(request):
@@ -94,8 +109,13 @@ def setor_update(request, id):
 
 ########################## HORÁRIO DO SETOR ##########################
 def admin_horario_setor_list(request):
-    horarios = HorarioSetor.objects.all()
-    context = {'horarios': horarios}
+    horarios = HorarioSetor.objects.all().order_by("setor")
+    paginacao = Paginator(horarios, 5)
+
+    page_number = request.GET.get("page")
+    page_obj = paginacao.get_page(page_number)
+
+    context = {'page_obj': page_obj}
     return render(request, "setores/horarios/horario_setor_list.html", context)
 
 def horario_setor_list(request):
@@ -131,7 +151,12 @@ def horario_setor_update(request, id):
 ########################## REFEIÇÃO ##########################
 def admin_refeicao_list(request):
     refeicoes = Refeicao.objects.all()
-    context = {'refeicoes': refeicoes}
+    paginacao = Paginator(refeicoes, 5)
+
+    page_number = request.GET.get("page")
+    page_obj = paginacao.get_page(page_number)
+    context = {'page_obj': page_obj}
+    
     return render(request, "refeicoes/refeicao_list.html", context)
 
 def refeicao_list(request):

@@ -20,7 +20,7 @@ class MultipleFileField(forms.FileField):
     
 class DivulgacaoForm(forms.ModelForm):
     imagem_da_divulgacao = MultipleFileField()
-
+    
     class Meta:
         model = Divulgacao
         fields = "__all__"
@@ -29,9 +29,10 @@ class DivulgacaoForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
         for field_name, field in self.fields.items():
             field.widget.attrs['class'] = 'form-control'
-
+        self.fields['autor'].required=False
+        self.fields['autor'].widget = forms.HiddenInput()
+        
 class SetorForm(forms.ModelForm):
-
     class Meta:
         model = Setor
         fields = "__all__"

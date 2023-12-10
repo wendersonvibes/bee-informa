@@ -1,8 +1,64 @@
-<a href="{% url 'setor-create' %}">Adicionar setor</a> <br><br>
+{% load static %}
 
-{% for setor in setores  %}
-    {{ setor.nome }} - {{ setor.id }} 
-    <a href="{% url 'setor-delete' setor.id %}">Deletar</a>
-    <a href="{% url 'setor-update' setor.id %}">Editar</a>
-    <br>
-{% endfor %}
+{% block sidebar %}
+    {% include "sidebar.html" %}
+{% endblock sidebar %}
+
+{% block 'conteudo' %}
+    <div class="container">
+        <a href="{% url 'setor-create' %}">Adicionar setor</a>
+
+        <table class="table table-striped ">
+            <thead>
+                <tr>
+                    <td>Nome</td>
+                    <td>Opções</td>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for setor in page_obj %}
+                    <tr>
+                        <td> {{ setor.nome }} </td>
+                        <td>
+                            <a class="btn btn-danger" href="{% url 'setor-delete' setor.id %}">Deletar</a>
+                            <a class="btn btn-warning" href="{% url 'setor-update' setor.id %}">Editar</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        {% comment %} PAGINAÇÃO {% endcomment %}
+        <div class="pagination justify-content-center">
+            <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-end">
+                    {% if page_obj.has_previous %}
+                        <li class="page-item">
+                            <a class="page-link" href="?page=1">&laquo; Primeiro</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="?page={{ page_obj.previous_page_number }}">Anterior</a>
+                        </li>
+                    {% endif %}
+
+                    <li class="page-item">
+                        <span class="page-link">
+                            Página {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}
+                        </span>
+                    </li>
+
+                  {% if page_obj.has_next %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ page_obj.next_page_number }}">Próximo</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">Último &raquo;</a>
+                    </li>
+                  {% endif %}
+                </ul>
+            </nav>
+        </div>
+    </div>
+{% endblock 'conteudo' %}
+

@@ -12,24 +12,57 @@
             <thead>
                 <tr>
                     <td>Título</td>
+                    <td>Data de registro</td>
+                    <td>Autor</td>
                     <td>Opções</td>
                 </tr>
             </thead>
 
             <tbody>
-                {% for divulg in divulgacoes %}
+                {% for divulg in page_obj %}
                     <tr>
-                        <td> 
-                            <a href="{% url 'divulgacao-detail' divulg.id %}">{{ divulg.titulo }}</a> 
-                        </td>
+                        <td> <a href="{% url 'divulgacao-detail' divulg.id %}">{{ divulg.titulo }}</a> </td>
+                        <td> {{ divulg.data_registro }} </td>
+                        <td> {{ divulg.autor }} </td>
                         <td>
-                            <a href="{% url 'divulgacao-delete' divulg.id %}">Deletar</a>
-                            <a href="{% url 'divulgacao-update' divulg.id %}">Editar</a>
+                            <a class="btn btn-danger" href="{% url 'divulgacao-delete' divulg.id %}">Deletar</a>
+                            <a class="btn btn-warning" href="{% url 'divulgacao-update' divulg.id %}">Editar</a>
                         </td>
                     </tr>
                 {% endfor %}
             </tbody>
         </table>
+
+        {% comment %} PAGINAÇÃO {% endcomment %}
+        <div class="pagination justify-content-center">
+            <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-end">
+                    {% if page_obj.has_previous %}
+                        <li class="page-item">
+                            <a class="page-link" href="?page=1">&laquo; Primeiro</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="?page={{ page_obj.previous_page_number }}">Anterior</a>
+                        </li>
+                    {% endif %}
+
+                    <li class="page-item">
+                        <span class="page-link">
+                            Página {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}
+                        </span>
+                    </li>
+
+                  {% if page_obj.has_next %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ page_obj.next_page_number }}">Próximo</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">Último &raquo;</a>
+                    </li>
+                  {% endif %}
+                </ul>
+            </nav>
+        </div>
     </div>
 {% endblock 'conteudo' %}
 
