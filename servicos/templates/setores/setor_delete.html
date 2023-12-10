@@ -1,14 +1,14 @@
 {% extends "modelo.html" %}
 
 {% block titulo %}
-    <title>Deletar divulgação</title>
+    <title>Deletar setor</title>
 {% endblock titulo %}
 
 {% block 'conteudo' %}
-    <form action="{% url "divulgacao-delete" divulgacao.id %}" method="POST" class="container conteudo-corpo-admin mt-5">
+    <form action="{% url 'setor-delete' setor.id %}" method="POST" class="container conteudo-corpo-admin">
         {% csrf_token %}
         
-        <h3>Deseja deletar: {{ divulgacao.titulo }}?</h3>
+        <h3>Deseja deletar: {{ setor.nome }}?</h3>
 
         <button type="submit" class="btn btn-danger">Deletar</button>
     </form>

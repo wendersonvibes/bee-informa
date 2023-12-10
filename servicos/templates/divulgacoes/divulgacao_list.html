@@ -1,21 +1,35 @@
-{% extends "modelo.html" %}
+{% load static %}
+
+{% block sidebar %}
+    {% include "sidebar.html" %}
+{% endblock sidebar %}
 
 {% block 'conteudo' %}
-    {% for divulg in divulgacoes %}
-    <div>
-        <h1 class='titulo-conteudo'>{{ divulg.titulo }}</h1>
-        <p> {{ divulg.data_registro }} </p>
-        <hr>
-        <div> {{ divulg.conteudo|safe }} </div>
+    <div class="container">
+        <a href="{% url 'divulgacao-create' %}">Criar divulgação</a>
 
-        
-        {% for img in divulg.imagem_da_divulgacao.all %}
-            <img src="{{ img.imagem.url }}" alt="">
-        {% endfor %}
-                           
+        <table class="table table-striped ">
+            <thead>
+                <tr>
+                    <td>Título</td>
+                    <td>Opções</td>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for divulg in divulgacoes %}
+                    <tr>
+                        <td> 
+                            <a href="{% url 'divulgacao-detail' divulg.id %}">{{ divulg.titulo }}</a> 
+                        </td>
+                        <td>
+                            <a href="{% url 'divulgacao-delete' divulg.id %}">Deletar</a>
+                            <a href="{% url 'divulgacao-update' divulg.id %}">Editar</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
     </div>
-    {% empty %}
-    <p>Desculpe, por enquanto nada foi postado!</p>
-    {% endfor %}
 {% endblock 'conteudo' %}
 

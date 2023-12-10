@@ -1,0 +1,15 @@
+
+
+<a href="{% url 'horario-setor-create' %}">Adicionar horário</a> <br> <br>
+
+{% for horario in horarios  %}
+
+    <h4>{{ horario.setor.nome }}</h4> <br>
+
+    {{ horario.dia_semana }} 
+    {{ horario.horario_inicio }} - {{ horario.horario_fim }}
+
+    <a href="{% url 'horario-setor-delete' horario.id %}">Deletar</a>
+    <a href="{% url 'horario-setor-update' horario.id %}">Editar</a>
+
+{% endfor %}

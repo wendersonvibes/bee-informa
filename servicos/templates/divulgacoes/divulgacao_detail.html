@@ -1,0 +1,44 @@
+{% extends "modelo.html" %}
+{% load static %}
+
+
+{% block 'titulo' %}
+    <title> {{ divulgacao.titulo }} </title>
+{% endblock 'titulo' %}
+
+
+{% block 'cabecalho' %}
+    <section class="container-fluid" id="cabecalho">
+        <section class="container">
+            <section class="row">
+                <section class="col-md-12">
+                <section id="conteudo-cabecalho">
+                    <h1 id="titulo"> {{ divulgacao.titulo }} </h1>
+                    <p class="lead">Bem vindo(a) a colmeia de novidades!</p>
+                </section>
+                </section>
+            </section>
+        </section>
+    </section>
+{% endblock 'cabecalho' %}
+
+{% block 'conteudo' %}
+    <section class="container-fluid">
+        <div class="container mt-5">
+        
+            <div class="row">
+                <div class="col-md-12">
+                    <h3 class="h3 titulo-conteudo">{{ divulgacao.titulo }}</h3>
+                    <p class="text-muted data-publicacao" >Publicada em {{ divulgacao.data_registro }}</p>
+                    <p>{{ divulgacao.conteudo|safe }}</p>
+                </div>
+                
+                <article class="col-md-12 galeria" >
+                    {% for img in divulgacao.imagem_da_divulgacao.all %}
+                        <img class="img-thumbnail" src="{{ img.imagem.url }}" alt="">
+                    {% endfor %}
+                </article>  
+            </div>
+        </div>
+    </section>
+{% endblock 'conteudo' %}

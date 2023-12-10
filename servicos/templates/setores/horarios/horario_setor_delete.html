@@ -1,0 +1,16 @@
+{% extends "modelo.html" %}
+
+{% block titulo %}
+    <title>Deletar horário do setor</title>
+{% endblock titulo %}
+
+{% block 'conteudo' %}
+    <form action="{% url 'horario-setor-delete' horario.id %}" method="POST" class="container conteudo-corpo-admin">
+        {% csrf_token %}
+        
+        <h3>Deseja deletar o horário de início do: {{ horario.setor.nome }}?</h3>
+
+        <button type="submit" class="btn btn-danger">Deletar</button>
+    </form>
+{% endblock 'conteudo' %}
+

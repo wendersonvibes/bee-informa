@@ -1,0 +1,8 @@
+<a href="{% url 'setor-create' %}">Adicionar setor</a> <br><br>
+
+{% for setor in setores  %}
+    {{ setor.nome }} - {{ setor.id }} 
+    <a href="{% url 'setor-delete' setor.id %}">Deletar</a>
+    <a href="{% url 'setor-update' setor.id %}">Editar</a>
+    <br>
+{% endfor %}

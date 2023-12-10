@@ -1,0 +1,26 @@
+{% extends "modelo.html" %}
+
+{% block titulo %}
+    <title>Deletar refeição</title>
+{% endblock titulo %}
+
+{% block 'conteudo' %}
+    <form action="{% url 'refeicao-delete' refeicao.id %}" method="POST" class="container conteudo-corpo-admin">
+        {% csrf_token %}
+        
+        <h3>Deseja deletar a refeição do dia: {{ refeicao.data }}?</h3>
+
+        <h5>Dados:</h5>
+        <div>
+            {{ refeicao.tipo_refeicao.tipo_refeicao }} - {{ refeicao.data }}
+
+            <div>
+                {{ refeicao.horario_inicio }} - {{ refeicao.horario_fim }}
+            </div>
+            {{ refeicao.descricao }}
+        </div>
+
+        <button type="submit" class="btn btn-danger">Deletar</button>
+    </form>
+{% endblock 'conteudo' %}
+

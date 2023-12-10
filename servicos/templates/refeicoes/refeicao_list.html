@@ -1,0 +1,16 @@
+<a href="{% url 'refeicao-create' %}">Adicionar refeição</a> <br><br>
+
+{% for refeicao in refeicoes  %}
+    {{ refeicao.tipo_refeicao.tipo_refeicao }} - {{ refeicao.data }}
+
+    <div>
+        {{ refeicao.horario_inicio }} - {{ refeicao.horario_fim }}
+    </div>
+    
+    
+    <a href="{% url 'refeicao-delete' refeicao.id %}">Deletar</a>
+    <a href="{% url 'refeicao-update' refeicao.id %}">Editar</a> 
+    {{ refeicao.descricao }}
+    <hr>
+    
+{% endfor %}

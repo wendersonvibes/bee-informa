@@ -1,5 +1,5 @@
 from django import forms
-from .models import Divulgacao
+from .models import Divulgacao, Setor, HorarioSetor, Refeicao
 
 class MultipleFileInput(forms.ClearableFileInput):
     allow_multiple_selected = True
@@ -29,3 +29,39 @@ class DivulgacaoForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
         for field_name, field in self.fields.items():
             field.widget.attrs['class'] = 'form-control'
+
+class SetorForm(forms.ModelForm):
+
+    class Meta:
+        model = Setor
+        fields = "__all__"
+    
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for field_name, field in self.fields.items():
+            field.widget.attrs['class'] = 'form-control'
+
+class HorarioSetorForm(forms.ModelForm):
+    class Meta:
+        model = HorarioSetor
+        fields = "__all__"
+    
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for field_name, field in self.fields.items():
+            field.widget.attrs['class'] = 'form-control'
+        self.fields['horario_inicio'].widget.attrs.update({'class': 'form-control mask-time'})
+        self.fields['horario_fim'].widget.attrs.update({'class': 'form-control mask-time'})
+
+class RefeicaoForm(forms.ModelForm):
+    class Meta:
+        model = Refeicao
+        fields = "__all__"
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for field_name, field in self.fields.items():
+            field.widget.attrs['class'] = 'form-control'
+        self.fields['horario_inicio'].widget.attrs.update({'class': 'form-control mask-time'})
+        self.fields['horario_fim'].widget.attrs.update({'class': 'form-control mask-time'})
+        self.fields['data'].widget.attrs.update({'class': 'form-control mask-date', 'placeholder': 'DD/MM/AA'})

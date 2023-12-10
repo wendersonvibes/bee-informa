@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Divulgacao, Imagem, TipoDivulgacao
+from .models import Divulgacao, Imagem, TipoDivulgacao, Setor, HorarioSetor, TipoRefeicao, Refeicao
 
 admin.site.register(TipoDivulgacao)
 
@@ -10,3 +10,11 @@ class DivulgacaoAdmin(admin.ModelAdmin):
 @admin.register(Imagem)
 class ImagemDivulgacaoAdmin(admin.ModelAdmin):
     list_display = ['id']
+
+@admin.register(Setor)
+class SetorAdmin(admin.ModelAdmin):
+    list_display = ['id', 'nome']
+
+admin.site.register(HorarioSetor)
+admin.site.register(TipoRefeicao)
+admin.site.register(Refeicao)

@@ -1,0 +1,19 @@
+{% extends "modelo.html" %}
+{% load static %}
+
+{% block titulo %}
+    <title>Adicionar horário do setor</title>
+{% endblock titulo %}
+
+
+{% block 'conteudo' %}
+    <form action="{% url 'horario-setor-create'%}" method="POST" class="container conteudo-corpo-admin mt-4 mb-4">
+        {% csrf_token %}
+
+        {{ form.media }}
+        {{ form.as_p }}
+        
+        <button type="submit" class="btn btn-danger">Criar</button> 
+    </form>
+{% endblock 'conteudo' %}
+

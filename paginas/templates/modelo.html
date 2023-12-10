@@ -19,6 +19,7 @@
 
 </head>
 <body>
+
     {% block 'navbar' %}
         <div class="container-fluid ">
             <section class="container">
@@ -26,25 +27,41 @@
                     <section class="col-md-12">
                         <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
                             <div class="container-fluid">
-                            <a class="navbar-brand" href="#"></a>
-                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                                <span class="navbar-toggler-icon"></span>
-                            </button>
-                            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                                <ul class="navbar-nav ms-auto">
-                                <li class="nav-item">
-                                    <a class="nav-link active" aria-current="page" href="{% url "inicio" %}">INÍCIO</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link active" aria-current="page" href="{% url "divulgacoes" %}">DIVULGAÇÕES</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link active" aria-current="page" href="{% url "setores" %}">SETORES</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link active" aria-current="page" href="{% url 'login' %}">ENTRAR</a>
-                                </li>
-                            </div>
+                                <a class="navbar-brand" href="#"></a>
+                                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                                    <span class="navbar-toggler-icon"></span>
+                                </button>
+                                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                                    <ul class="navbar-nav ms-auto">
+                                        {% if request.user.is_authenticated %}
+                                            <li class="nav-item">
+                                                <a class="nav-link active" style='color: var(--roxo);' aria-current="page" href="{% url "tela-admin" %}">Tela admin</a>
+                                            </li>
+                                        {% endif %}
+                                        <li class="nav-item">
+                                            <a class="nav-link active" aria-current="page" href="{% url "inicio" %}">INÍCIO</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link active" aria-current="page" href="#nutricao">NUTRIÇÃO</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link active" aria-current="page" href="#divulgacoes">DIVULGAÇÕES</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link active" aria-current="page" href="#setores">SETORES</a>
+                                        </li>
+                                    
+                                        {% if request.user.is_authenticated %}
+                                            <li class="nav-item">
+                                                <a class="nav-link " style='color: var(--roxo);' aria-current="page" href="{% url 'logout' %}">SAIR</a>
+                                            </li>
+                                        {% else %}
+                                            <li class="nav-item">
+                                                <a class="nav-link active" aria-current="page" href="{% url 'login' %}">ENTRAR</a>
+                                            </li>
+                                        {% endif %}
+                                    </ul>
+                                </div>
                             </div>
                         </nav>
                     </section>
