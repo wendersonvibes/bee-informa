@@ -18,7 +18,9 @@ body{
 .navbar{
     font-size: 14px;
     background-color: var(--laranja_escuro);
-}.collapse{
+}
+
+.collapse{
     padding-right: 5.5em;
 }
 
@@ -38,7 +40,6 @@ body{
 }
 
 /* ajuste de imagem e carousel */
-
 img{
     object-fit: cover;
     width: 500px;
@@ -55,7 +56,6 @@ img{
 }
 
 /* espaçamento conteudo site */
-
 .conteudo-corpo{
     padding-top: 4em;
     padding-bottom: 2em;
@@ -86,16 +86,17 @@ img{
 }
 
 /* botao */
-
 .botao{
     margin-bottom: 2em;
     margin-top: 1em;
 }
 
+.botao-roxo {
+    background-color: var(--roxo);
+}
 
 
 /* titulo-conteudo */
-
 .titulo-conteudo{
     color: var(--roxo);
     padding-bottom: 10px;
@@ -107,8 +108,6 @@ img{
     column-count: 6;
     column-gap: 10px;
 }
-
-
 
 /* ajuste de responsividade */
 @media (max-width: 450px){

@@ -1,0 +1,44 @@
+
+        <nav class="navbar navbar-expand topbar static-top shadow navbar-dark">
+
+            <!-- Sidebar Toggle (Topbar) -->
+            <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                <i class="fa fa-bars" style='color: var(--roxo);'></i>
+            </button>
+
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#"></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="{% url 'inicio' %}">INÍCIO</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#nutricao">NUTRIÇÃO</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#divulgacoes">DIVULGAÇÕES</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#setores">SETORES</a>
+                        </li>
+                    
+                        {% if request.user.is_authenticated %}
+                            <li class="nav-item">
+                                <a class="nav-link active" style='color: var(--roxo);' aria-current="page" href="{% url "tela-admin" %}">Administração</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link bi bi-box-arrow-right" style='color: var(--roxo);' aria-current="page" href="{% url 'logout' %}"></a>
+                            </li>
+                        {% else %}
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="{% url 'login' %}">ENTRAR</a>
+                            </li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </nav>

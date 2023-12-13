@@ -1,14 +1,11 @@
+{% extends "tela_admin.html" %}
 {% load static %}
-
-{% block sidebar %}
-    {% include "sidebar.html" %}
-{% endblock sidebar %}
 
 {% block 'conteudo' %}
     <div class="container">
-        <a href="{% url 'horario-setor-create' %}">Adicionar horário do setor</a>
+        <a class="btn btn-primary" href="{% url 'horario-setor-create' %}">Adicionar horário do setor</a>
 
-        <table class="table table-striped ">
+        <table class="table table-striped mt-4">
             <thead>
                 <tr>
                     <td>Setor</td>

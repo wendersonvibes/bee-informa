@@ -43,7 +43,7 @@
         <section class="container-fluid">
             <section class="container">
             {% for divulg in divulgacoes %}
-                <section class="row">
+                <section class="row mb-5">
                     
                     <div class="col-md-12">
                         <h3 class="h3 titulo-conteudo">{{ divulg.titulo }}</h3>
@@ -56,7 +56,7 @@
                             <img class="img-thumbnail" src="{{ img.imagem.url }}" alt="">
                         {% endfor %}
                     </article>
-                      
+                    <hr class="mt-4">
                 </section>
             {% endfor %}
         </section>
