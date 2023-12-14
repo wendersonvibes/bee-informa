@@ -76,17 +76,12 @@ def admin_setor_list(request):
     context = {'page_obj': page_obj}
     return render(request, "setores/setor_list.html", context)
 
-def setor_list(request):
-    setores = Setor.objects.all()
-    context = {'setores': setores}
-    return render(request, "setores/setor_list.html", context)
-
 def setor_create(request):
     if (request.method == "POST"):
         form = SetorForm(request.POST)
         if form.is_valid():
             form.save() # salva o form
-            return HttpResponseRedirect(reverse("setor-list"))
+            return HttpResponseRedirect(reverse("admin-setor-list"))
     else:
         form = SetorForm()
     return render(request, "setores/setor_create.html", {'form': form})
@@ -118,17 +113,12 @@ def admin_horario_setor_list(request):
     context = {'page_obj': page_obj}
     return render(request, "setores/horarios/horario_setor_list.html", context)
 
-def horario_setor_list(request):
-    horarios = HorarioSetor.objects.all()
-    context = {'horarios': horarios}
-    return render(request, "setores/horarios/horario_setor_list.html", context)
-
 def horario_setor_create(request):
     if (request.method == "POST"):
         form = HorarioSetorForm(request.POST)
         if form.is_valid():
             form.save() # salva o form
-            return HttpResponseRedirect(reverse("horario-setor-list"))
+            return HttpResponseRedirect(reverse("admin-horario-setor-list"))
     form = HorarioSetorForm()
     return render(request, "setores/horarios/horario_setor_create.html", {'form': form})
 
@@ -136,7 +126,7 @@ def horario_setor_delete(request, id):
     horario_setor = HorarioSetor.objects.get(id=id)
     if (request.method == "POST"):
         horario_setor.delete()
-        return HttpResponseRedirect(reverse("horario-setor-list"))
+        return HttpResponseRedirect(reverse("admin-horario-setor-list"))
     return render(request, "setores/horarios/horario_setor_delete.html", {'horario': horario_setor})
 
 def horario_setor_update(request, id):
@@ -145,7 +135,7 @@ def horario_setor_update(request, id):
     if (request.method == "POST"):
         if form.is_valid():
             form.save()
-            return HttpResponseRedirect(reverse("horario-setor-list"))
+            return HttpResponseRedirect(reverse("admin-horario-setor-list"))
     return render(request, "setores/horarios/horario_setor_update.html", {'form': form})
 
 ########################## REFEIÇÃO ##########################
@@ -159,17 +149,12 @@ def admin_refeicao_list(request):
     
     return render(request, "refeicoes/refeicao_list.html", context)
 
-def refeicao_list(request):
-    refeicoes = Refeicao.objects.all()
-    context = {'refeicoes': refeicoes}
-    return render(request, "refeicoes/refeicao_list.html", context)
-
 def refeicao_create(request):
     if (request.method == "POST"):
         form = RefeicaoForm(request.POST)
         if form.is_valid():
             form.save() # salva o form
-            return HttpResponseRedirect(reverse("refeicao-list"))
+            return HttpResponseRedirect(reverse("admin-refeicao-list"))
     form = RefeicaoForm()
     return render(request, "refeicoes/refeicao_create.html", {'form': form})
 
@@ -177,7 +162,7 @@ def refeicao_delete(request, id):
     refeicao = Refeicao.objects.get(id=id)
     if (request.method == "POST"):
         refeicao.delete()
-        return HttpResponseRedirect(reverse("refeicao-list"))
+        return HttpResponseRedirect(reverse("admin-refeicao-list"))
     return render(request, "refeicoes/refeicao_delete.html", {'refeicao': refeicao})
 
 def refeicao_update(request, id):
@@ -186,5 +171,5 @@ def refeicao_update(request, id):
     if (request.method == "POST"):
         if form.is_valid():
             form.save()
-            return HttpResponseRedirect(reverse("refeicao-list"))
+            return HttpResponseRedirect(reverse("admin-refeicao-list"))
     return render(request, "refeicoes/refeicao_update.html", {'form': form})

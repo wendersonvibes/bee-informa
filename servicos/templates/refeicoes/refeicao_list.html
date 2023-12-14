@@ -22,8 +22,8 @@
                         <td> {{ refeicao.horario_inicio }} - {{ refeicao.horario_fim }} - {{ refeicao.dia_semana }} </td>
                         <td> {{ refeicao.data }} </td>
                         <td>
-                            <a href="{% url 'refeicao-delete' refeicao.id %}">Deletar</a>
-                            <a href="{% url 'refeicao-update' refeicao.id %}">Editar</a> 
+                            <a class="btn btn-danger" href="{% url 'refeicao-delete' refeicao.id %}">Deletar</a>
+                            <a class="btn btn-warning" href="{% url 'refeicao-update' refeicao.id %}">Editar</a> 
                         </td>
                     </tr>
                 {% endfor %}

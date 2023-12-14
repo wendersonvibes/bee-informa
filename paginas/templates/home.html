@@ -97,10 +97,7 @@
                 <div class="col-md-12 conteudo-corpo" id="setores">
                 <h3 class="h3 titulo-secundario">SETORES</h3>
                 <p class="descricao-titulo">
-                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit 
-                    in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-                    sunt in culpa qui officia deserunt mollit anim id est laborum."
+                    Confira os horários de atendimento de cada setor do campus
                 </p>
                 <a href="{% url "setores" %}" class="btn btn-primary botao">Saiba mais</a>
             
@@ -108,9 +105,9 @@
                 <article class="col-md-6 lista-setores">
                     <h6 class="h5">Setores cadastrados:</h6>
                     <div class="list-group">
-                    <a href="#" class="list-group-item list-group-item-action">A second link item</a>
-                    <a href="#" class="list-group-item list-group-item-action">A third link item</a>
-                    <a href="#" class="list-group-item list-group-item-action">A fourth link item</a>
+                        {% for setor in setores %}
+                            <a href="{% url 'setores' %}" class="list-group-item list-group-item-action"> {{ setor.nome }} </a>
+                        {% endfor %}
                     </div>
                 </article>
                 </div>
@@ -135,42 +132,42 @@
                     <!-- cards divulgacões -->
                     <article class="col-md-12 home-card">
                         <div class="row row-cols-1 row-cols-md-3 g-4">
-                        <div class="col">
-                            <div class="card h-100">
-                            <img src="{% static 'imagens/IMG-20231018-WA0050.jpg'%}" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <a href=""><h5 class="card-title">Card title</h5></a>
-                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                            <div class="col">
+                                <div class="card h-100">
+                                    <img src="{% static 'imagens/IMG-20231018-WA0050.jpg'%}" class="card-img-top" alt="...">
+                                    <div class="card-body">
+                                        <a href=""><h5 class="card-title">Card title</h5></a>
+                                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                    </div>
+                                    <div class="card-footer">
+                                        <small class="text-muted">Last updated 3 mins ago</small>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="card-footer">
-                                <small class="text-muted">Last updated 3 mins ago</small>
+                            <div class="col">
+                                <div class="card h-100">
+                                    <img src="{% static 'imagens/IMG-20231023-WA0252.jpg'%}" class="card-img-top" alt="...">
+                                    <div class="card-body">
+                                        <a href=""><h5 class="card-title">Card title</h5></a>
+                                        <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+                                    </div>
+                                    <div class="card-footer">
+                                        <small class="text-muted">Last updated 3 mins ago</small>
+                                    </div>
+                                </div>
                             </div>
+                            <div class="col">
+                                <div class="card h-100">
+                                    <img src="{% static 'imagens/20230711_135518.jpg'%}" class="card-img-top" alt="...">
+                                    <div class="card-body">
+                                        <a href="" ><h5 class="card-title">Card title</h5></a>
+                                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+                                    </div>
+                                    <div class="card-footer">
+                                        <small class="text-muted">Last updated 3 mins ago</small>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col">
-                            <div class="card h-100">
-                            <img src="{% static 'imagens/IMG-20231023-WA0252.jpg'%}" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <a href=""><h5 class="card-title">Card title</h5></a>
-                                <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-                            </div>
-                            <div class="card-footer">
-                                <small class="text-muted">Last updated 3 mins ago</small>
-                            </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="card h-100">
-                            <img src="{% static 'imagens/20230711_135518.jpg'%}" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <a href="" ><h5 class="card-title">Card title</h5></a>
-                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-                            </div>
-                            <div class="card-footer">
-                                <small class="text-muted">Last updated 3 mins ago</small>
-                            </div>
-                            </div>
-                        </div>
                         </div>
                     </article>
                     <!-- fim dos cards -->

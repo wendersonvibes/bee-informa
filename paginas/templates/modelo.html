@@ -19,11 +19,9 @@
 </head>
 <body>
 
-    <div class="contaienr">
-
-    
+    <div class="contaienr">  
         {% block navbar %}
-            {% include "includes/navbar.html" %}
+            {% include "includes/navbar_fixed.html" %}
         {% endblock navbar %}            
 
         {% block 'cabecalho' %}
@@ -42,7 +40,6 @@
         {% endblock 'cabecalho' %}
 
         {% block 'conteudo' %}
-        
         {% endblock 'conteudo' %}
 
         {% block rodape %}

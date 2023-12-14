@@ -40,8 +40,9 @@
         <section class='container-fluid'>
             <section class='container'>
                 <section class='row'>
+                    {% for setor_nome, setor_info in setores_info.items %}
                     <section class='col-md-12'>
-                        <h3 class='h3 titulo-conteudo'>Nome do setor</h3>
+                        <h3 class='h3 titulo-conteudo'> {{ setor_info.nome }} </h3>
 
                         <article class='col-md-8'>
                             <div class='table-responsive'>
@@ -49,26 +50,67 @@
                                     <thead scope='col'>
                                         <tr>
                                             <th scope="col">Segunda-feira</th>
-                                            <th scope="col">Terça-Feira</th>
+                                            <th scope="col">Terça-feira</th>
                                             <th scope="col">Quarta-feira</th>
                                             <th scope="col">Quinta-feira</th>
                                             <th scope="col">Sexta-feira</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>9:00 ás 11:00</td>
-                                            <td>-</td>
-                                            <td>14:00 ás 16:00</td>
-                                            <td>14:00 ás 16:00</td>
-                                            <td>14:00 ás 16:00</td>
-                                        </tr>
+                                        {% for horario in setor_info.horarios %}
+                                            {% if horario.dia_semana == "SEG" %}
+                                            <tr>
+                                                <td> {{ horario.horario_inicio }} - {{ horario.horario_fim }} </td>
+                                                <td> - </td>
+                                                <td> - </td>
+                                                <td> - </td>
+                                                <td> - </td>
+                                            </tr>
+
+                                            {% elif horario.dia_semana == "TER" %}
+                                            <tr>
+                                                <td> - </td>
+                                                <td> {{ horario.horario_inicio }} - {{ horario.horario_fim }} </td>
+                                                <td> - </td>
+                                                <td> - </td>
+                                                <td> - </td>
+                                            </tr>
+                                                                                        
+                                            {% elif horario.dia_semana == "QUA" %}
+                                            <tr>
+                                                <td> - </td>
+                                                <td> - </td>
+                                                <td> {{ horario.horario_inicio }} - {{ horario.horario_fim }} </td>
+                                                <td> - </td>
+                                                <td> - </td>
+                                            </tr>
+                                                                                        
+                                            {% elif horario.dia_semana == "QUI" %}
+                                            <tr>
+                                                <td> - </td>
+                                                <td> - </td>
+                                                <td> - </td>
+                                                <td> {{ horario.horario_inicio }} - {{ horario.horario_fim }} </td>
+                                                <td> - </td>
+                                            </tr>
+                                                                                        
+                                            {% elif horario.dia_semana == "SEX" %}
+                                            <tr>
+                                                <td> - </td>
+                                                <td> - </td>
+                                                <td> - </td>
+                                                <td> - </td>
+                                                <td> {{ horario.horario_inicio }} - {{ horario.horario_fim }} </td>
+                                            </tr>
+                                            {% endif %}
+                                        {% endfor %}
                                     </tbody>
 
                                 </table>
                             </div>
                         </article>
                     </section>
+                    {% endfor %}
                 </section>
             </section>
         </section>

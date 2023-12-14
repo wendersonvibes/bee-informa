@@ -1,14 +1,31 @@
 from django.shortcuts import render
-from servicos.models import Divulgacao
+from servicos.models import Divulgacao, HorarioSetor, Setor
 from django.core.paginator import Paginator
 
 # Create your views here.
 
 def home_view(request):
-    return render(request, 'home.html')
+    setores = Setor.objects.all()
+    context = {'setores': setores}
+    return render(request, 'home.html', context)
 
 def setores_view(request):
-    return render(request, 'setores.html')
+    setores = Setor.objects.all().order_by('horario_do_setor')
+    setores_info = {}
+
+    for setor in setores:
+        setor_info = {'nome': setor.nome, 'horarios': []}
+        for horario in setor.horario_do_setor.all():
+            info_horario = {
+                'dia_semana': horario.dia_semana,
+                'horario_inicio': horario.horario_inicio,
+                'horario_fim': horario.horario_fim
+            }
+            setor_info['horarios'].append(info_horario)
+        setores_info[setor.nome] = setor_info
+
+    context = {'setores_info': setores_info}
+    return render(request, 'setores.html', context)
 
 def divulgacoes_view(request):
     return render(request, 'divulgacoes.html')

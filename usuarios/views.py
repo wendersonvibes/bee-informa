@@ -3,6 +3,7 @@ from django.shortcuts import render
 from django.urls import reverse
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, logout, login
+from django.contrib import messages
 
 def login_view(request):
     if request.method == "POST":
@@ -14,13 +15,10 @@ def login_view(request):
             login(request, user)
             return HttpResponseRedirect(reverse('inicio'))
         else:
-            return HttpResponse("Algo errado")
+            messages.error(request, "Nome de usuário ou senha inválidos")
+            return HttpResponseRedirect(reverse('login'))
     return render(request, 'login.html')
 
 def logout_view(request):
     logout(request)
     return HttpResponseRedirect(reverse('inicio'))
-
-# def dashboard_view(request):
-#     if request.user.is_authenticated:
-#         return render(request, 'tela-admin.html')

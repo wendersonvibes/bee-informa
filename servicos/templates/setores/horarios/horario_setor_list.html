@@ -18,7 +18,7 @@
                 {% for horario in page_obj %}
                     <tr>
                         <td> {{ horario.setor.nome }} </td>
-                        <td> {{ horario.horario_inicio }} - {{ horario.horario_fim }} - {{ horario.dia_semana }} </td>
+                        <td> {{ horario.horario_inicio }} - {{ horario.horario_fim }} - ({{ horario.dia_semana }}) </td>
                         <td>
                             <a class="btn btn-danger" href="{% url 'horario-setor-delete' horario.id %}">Deletar</a>
                             <a class="btn btn-warning" href="{% url 'horario-setor-update' horario.id %}">Editar</a>
