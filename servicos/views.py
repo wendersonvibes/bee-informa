@@ -90,7 +90,7 @@ def setor_delete(request, id):
     setor = Setor.objects.get(id=id)
     if (request.method == "POST"):
         setor.delete()
-        return HttpResponseRedirect(reverse("setor-list"))
+        return HttpResponseRedirect(reverse("admin-setor-list"))
     return render(request, "setores/setor_delete.html", {'setor': setor})
 
 def setor_update(request, id):
@@ -99,7 +99,7 @@ def setor_update(request, id):
     if (request.method == "POST"):
         if form.is_valid():
             form.save()
-            return HttpResponseRedirect(reverse("setor-list"))
+            return HttpResponseRedirect(reverse("admin-setor-list"))
     return render(request, "setores/setor_update.html", {'form': form})
 
 ########################## HORÁRIO DO SETOR ##########################

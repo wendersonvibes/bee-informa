@@ -1,12 +1,16 @@
 from django.shortcuts import render
-from servicos.models import Divulgacao, HorarioSetor, Setor
+from servicos.models import Divulgacao, HorarioSetor, Setor, Refeicao
 from django.core.paginator import Paginator
 
 # Create your views here.
 
 def home_view(request):
     setores = Setor.objects.all()
-    context = {'setores': setores}
+    refeicoes = Refeicao.objects.all()
+    context = {
+        'setores': setores, 
+        'refeicoes': refeicoes
+    }
     return render(request, 'home.html', context)
 
 def setores_view(request):
@@ -24,6 +28,7 @@ def setores_view(request):
             setor_info['horarios'].append(info_horario)
         setores_info[setor.nome] = setor_info
 
+    print(setores_info)
     context = {'setores_info': setores_info}
     return render(request, 'setores.html', context)
 
