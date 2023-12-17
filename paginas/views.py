@@ -14,11 +14,17 @@ def home_view(request):
     return render(request, 'home.html', context)
 
 def setores_view(request):
-    setores = Setor.objects.all().order_by('horario_do_setor')
-    setores_info = {}
+    if 'q' in request.GET:
+        procura = request.GET['q']
+        setores = Setor.objects.filter(nome__icontains=procura)
+        setores_info = {}
+    else: 
+        setores = Setor.objects.all()
+        setores_info = {}
 
     for setor in setores:
         setor_info = {'nome': setor.nome, 'horarios': []}
+
         for horario in setor.horario_do_setor.all():
             info_horario = {
                 'dia_semana': horario.dia_semana,
@@ -28,7 +34,6 @@ def setores_view(request):
             setor_info['horarios'].append(info_horario)
         setores_info[setor.nome] = setor_info
 
-    print(setores_info)
     context = {'setores_info': setores_info}
     return render(request, 'setores.html', context)
 

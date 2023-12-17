@@ -60,54 +60,56 @@
                 <!-- tabela refeicao-->
                 <article class="col-md-12">
                     <div class="table-responsive">
-                        {% for refeicao in refeicoes %}
-                            <table class="table table-striped table-hover table-bordered align-middle">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">Horário</th>
-                                        <th scope="col">Segunda-feira</th>
-                                        <th scope="col">Terça-feira</th>
-                                        <th scope="col">Quarta-feira</th>
-                                        <th scope="col">Quinta-feira</th>
-                                        <th scope="col">Sexta-feira</th>
-                                    </tr>
-                                </thead>
-                                <tbody>   
-                                    <tr>
-                                        <td>{{ refeicao.horario_inicio }} - {{ refeicao.tipo_refeicao.tipo_refeicao }}</td>
-                                        {% if refeicao.tipo_refeicao.tipo_refeicao == "SEG" %}
-                                            <td>{{ refeicao.descricao }}</td>
-                                        {% else %}
-                                            <td> - </td>
-                                        {% endif %}
+                        
+                        <table class="table table-striped table-hover table-bordered align-middle">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Horário</th>
+                                    <th scope="col">Segunda-feira</th>
+                                    <th scope="col">Terça-feira</th>
+                                    <th scope="col">Quarta-feira</th>
+                                    <th scope="col">Quinta-feira</th>
+                                    <th scope="col">Sexta-feira</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for refeicao in refeicoes %}   
+                                <tr>
+                                    <td>{{ refeicao.horario_inicio }} - {{ refeicao.tipo_refeicao.tipo_refeicao }}</td>
+                                    {% if refeicao.dia_semana == "SEG" %}
+                                        <td>{{ refeicao.descricao }}</td>
+                                    {% else %}
+                                        <td> - </td>
+                                    {% endif %}
 
-                                        {% if refeicao.tipo_refeicao.tipo_refeicao == "TER" %}
-                                            <td>{{ refeicao.descricao }}</td>
-                                        {% else %}
-                                            <td> - </td>
-                                        {% endif %}
+                                    {% if refeicao.dia_semana == "TER" %}
+                                        <td>{{ refeicao.descricao }}</td>
+                                    {% else %}
+                                        <td> - </td>
+                                    {% endif %}
 
-                                        {% if refeicao.tipo_refeicao.tipo_refeicao == "QUA" %}
-                                            <td>{{ refeicao.descricao }}</td>
-                                        {% else %}
-                                            <td> - </td>  
-                                        {% endif %}
+                                    {% if refeicao.dia_semana == "QUA" %}
+                                        <td>{{ refeicao.descricao }}</td>
+                                    {% else %}
+                                        <td> - </td>  
+                                    {% endif %}
 
-                                        {% if refeicao.tipo_refeicao.tipo_refeicao == "QUI" %}
-                                            <td>{{ refeicao.descricao }}</td>
-                                        {% else %}
-                                            <td> - </td>
-                                        {% endif %}
+                                    {% if refeicao.dia_semana == "QUI" %}
+                                        <td>{{ refeicao.descricao }}</td>
+                                    {% else %}
+                                        <td> - </td>
+                                    {% endif %}
 
-                                        {% if refeicao.tipo_refeicao.tipo_refeicao == "SEX" %}
-                                            <td>{{ refeicao.descricao }}</td>
-                                        {% else %}
-                                            <td> - </td>
-                                        {% endif %}
-                                    </tr> 
-                                </tbody>
-                            </table>
-                        {% endfor %}
+                                    {% if refeicao.dia_semana == "SEX" %}
+                                        <td>{{ refeicao.descricao }}</td>
+                                    {% else %}
+                                        <td> - </td>
+                                    {% endif %}
+                                </tr> 
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                        
                     </div>
                 </article>
                 </div>

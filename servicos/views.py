@@ -19,7 +19,11 @@ def admin_divulgacao_list(request):
     return render(request, "divulgacoes/divulgacao_list.html", context)
 
 def divulgacao_list(request):
-    divulgacoes = Divulgacao.objects.all()
+    if 'q' in request.GET:
+        procura = request.GET['q']
+        divulgacoes = Divulgacao.objects.filter(titulo__icontains=procura)
+    else:
+        divulgacoes = Divulgacao.objects.all()
     context = {'divulgacoes': divulgacoes}
     return render(request, "divulgacoes.html", context)
 
